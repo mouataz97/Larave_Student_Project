@@ -11,7 +11,7 @@ class StudentController extends Controller
     {
         $students = Student::all();
 
-        return $students;
+        return view('students.index', compact('students'));
     }
 
     public function create(){
@@ -23,6 +23,31 @@ class StudentController extends Controller
             'name' => $request->name,
             'email' => $request->email
         ]);
+        return redirect('/students');
+    }
+
+    public function edit($id){
+        $student= Student::findOrFail($id);
+
+        return view('students.edit', compact('student'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $student= Student::findOrFail($id);
+        
+        $student->update([
+            'name' => $request->name,
+            'email' => $request->email
+        ]);
+        return redirect('/students');
+    }
+
+    public function delete($id)
+    {
+        $student = Student::findOrFail($id);
+        $student->delete();
+
         return redirect('/students');
     }
 }
