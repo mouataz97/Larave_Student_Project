@@ -19,6 +19,11 @@ class StudentController extends Controller
     }
 
     public function store(Request $request){
+        $request->validate([
+            'name' => 'required|min:3',
+            'email' => 'required|email|unique:students,email'
+        ]);
+
         Student::create([
             'name' => $request->name,
             'email' => $request->email
@@ -43,7 +48,7 @@ class StudentController extends Controller
         return redirect('/students');
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $student = Student::findOrFail($id);
         $student->delete();

@@ -20,4 +20,4 @@ Route::get('/students/create', [StudentController::class, 'create']);
 
 Route::post('/students', [StudentController::class, 'store']);
 
-Route::delete('/student/{id}', [StudentController::class, 'destroy']);
+Route::delete('/students/{id}', [StudentController::class, 'destroy']);

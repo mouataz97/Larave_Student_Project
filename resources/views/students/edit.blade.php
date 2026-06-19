@@ -1,16 +1,22 @@
-<h1>Edit Student</h1>
+@extends('layouts.app')
 
-<form method="POST" action="/students"
-    {{ $student->id}} >
-    
+@section('content')
+
+<h2>Edit Student</h2>
+
+<form method="POST" action="/students/{{ $student->id }}">
     @csrf
-    @method('PUT')
+    @method('DELETE')
 
-    <input type="text" name="name" placeholder="Name" value="{{ $student->name}}">
-    <br><br>
+    <div class="mb-3">
+        <label>Name</label>
+        <input type="text" name="name" value="{{ $student->name }}" class="form-control">
+    </div>
 
-    <input type="email" name="email" placeholder="Email" value="{{ $student->email}}">
-    <br><br>
+    <div class="mb-3">
+        <label>Email</label>
+        <input type="email" name="email" value="{{ $student->email }}" class="form-control">
+    </div>
 
-    <button type="submit">Update</button>
+    <button class="btn btn-primary">Update</button>
 </form>
