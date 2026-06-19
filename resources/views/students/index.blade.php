@@ -4,6 +4,19 @@
 
 <h2>Students List</h2>
 
+<form method="GET" action="/students" class="mb-3">
+    <input type="text" name="search" class="form-control"
+       placeholder="Search..."
+       value="{{ request('search') }}"
+       onkeyup="{{ request('search') }}">
+</form>
+
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
 <table class="table table-bordered table-striped mt-3">
     <thead class="table-dark">
         <tr>
@@ -32,4 +45,9 @@
         </tr>
         @endforeach
     </tbody>
+
+    <div class="mt-3">
+        {{ $students->links() }}
+    </div>
+
 </table>

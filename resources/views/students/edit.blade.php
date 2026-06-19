@@ -6,7 +6,7 @@
 
 <form method="POST" action="/students/{{ $student->id }}">
     @csrf
-    @method('DELETE')
+    @method('PUT')
 
     <div class="mb-3">
         <label>Name</label>
