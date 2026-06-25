@@ -2,17 +2,26 @@
 
 @section('content')
 
-<h2>Add Student</h2>
+<x-app-layouts>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            Add Student
+        </h2>
+    </x-slot>
 
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+    <div class="py-6">
+        <div class="max-w-7xl mx-auto">
+            @if($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+        </div>
+    </div>
+</x-app-layouts>
 
 <form method="POST" action="/students">
     @csrf

@@ -34,13 +34,23 @@
             <td>{{ $student->name }}</td>
             <td>{{ $student->email }}</td>
             <td>
-                <a class="btn btn-warning btn-sm" href="/students/{{ $student->id }}/edit">Edit</a>
+                @auth
+                @if(auth()->user()->role === 'admin')
+
+                <a class="btn ptn-warning btn-sm" 
+                    href="/students/{{ $student->id }}/edit">
+                    Edit
+                </a>
 
                 <form action="/students/{{ $student->id }}" method="POST" style="display:inline;">
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-sm">Delete</button>
+                    <button class="btn btn-danger btn-sm"
+                        Delete
+                    </button>
                 </form>
+                @endif
+                @endauth
             </td>
         </tr>
         @endforeach
