@@ -1,22 +1,63 @@
-@extends('layouts.app')
+<x-app-layout>
 
-@section('content')
 
-<h2>Edit Student</h2>
+<x-slot name="header">
 
-<form method="POST" action="/students/{{ $student->id }}">
-    @csrf
-    @method('PUT')
+<h2>
+Edit Student
+</h2>
 
-    <div class="mb-3">
-        <label>Name</label>
-        <input type="text" name="name" value="{{ $student->name }}" class="form-control">
-    </div>
+</x-slot>
 
-    <div class="mb-3">
-        <label>Email</label>
-        <input type="email" name="email" value="{{ $student->email }}" class="form-control">
-    </div>
 
-    <button class="btn btn-primary">Update</button>
+
+<div class="py-6">
+
+<div class="max-w-7xl mx-auto">
+
+
+<form method="POST"
+action="/students/{{ $student->id }}">
+
+
+@csrf
+
+@method('PUT')
+
+
+
+<label>Name</label>
+
+<input 
+class="form-control"
+name="name"
+value="{{ $student->name }}">
+
+
+
+<label>Email</label>
+
+<input 
+class="form-control"
+name="email"
+value="{{ $student->email }}">
+
+
+
+<button class="btn btn-primary mt-3">
+
+Update
+
+</button>
+
+
+
 </form>
+
+
+</div>
+
+</div>
+
+
+</x-app-layout>

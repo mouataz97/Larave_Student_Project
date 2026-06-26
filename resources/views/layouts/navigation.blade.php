@@ -17,10 +17,20 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link href="/students" :active="request()->is('students*')">
-                        {{ __('Students') }}
+                    <x-nav-link :href="url('/students')">
+                        Students
                     </x-nav-link>
 
+
+                    @if(auth()->user()->role == 'admin')
+
+                    <x-nav-link :href="url('/users')">
+                        Users
+                    </x-nav-link>
+
+                    @endif
+
+                    
                 </div>
             </div>
 
